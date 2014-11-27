@@ -8,6 +8,9 @@ var parser1 = new JavaScriptParser(fs.readFileSync('test/1.js').toString()),
     parser2 = new JavaScriptParser(fs.readFileSync('test/2.js').toString()),
     schema2 = parser2.tokenize();
 
+console.log(schema1);
+console.log(schema2);
+
 // Compare the two schemas by their identifiers.
 var comparison = variables(schema1, schema2);
 

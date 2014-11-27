@@ -9,7 +9,7 @@ var start = this._index,
 
 
 if (id.length === 1)
-  type = 'identifier';
+  type = 'identifier this is a test :)';
 else if (this._isKeyword(id))
   type = 'keyword';
 else

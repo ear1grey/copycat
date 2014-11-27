@@ -69,6 +69,11 @@ JavaScriptParser.prototype = {
       return this.identifier();
     }
 
+    // Is the current character a ' or " (beginning of a string)?
+    if (ch === 0x27 || ch === 0x22) {
+      return this.string();
+    }
+
     return this.punctuation();
   },
 
@@ -111,6 +116,34 @@ JavaScriptParser.prototype = {
     }
 
     return this._source.slice(start, this._index);
+  },
+
+  string: function () {
+    var start = this._index,
+        quote = this._source[this._index],
+        value = '',
+        ch = null;
+
+    ++this._index;
+
+    while (this._index < this._length) {
+      ch = this._source[this._index++];
+
+      // Break out of the while loop if we find a closing ' or " (depending on
+      // which one was used to open the string).
+      if (ch === quote) {
+        break;
+      }
+
+      value += ch;
+    }
+
+    return {
+      type: 'string',
+      value: value,
+      start: start,
+      end: this._index
+    };
   },
 
   punctuation: function () {
