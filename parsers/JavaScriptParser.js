@@ -97,7 +97,7 @@ JavaScriptParser.prototype = {
       value: id,
       start: start,
       end: this._index
-    }
+    };
   },
 
   getIdentifier: function () {
@@ -148,25 +148,51 @@ JavaScriptParser.prototype = {
 
   punctuation: function () {
     var start = this._index,
-        ch = this._source[this._index];
+        ch = this._source[this._index],
+        ch2 = this._source.substr(this._index, 2),
+        ch3 = this._source.substr(this._index, 3);
 
+    // Punctuators with 3 characters.
+    if (ch3 === '===' || ch3 === '!==') {
+      this._index += 3;
+      return {
+        type: 'punctuator',
+        value: ch3,
+        start: start,
+        end: this._index
+      };
+    }
+
+    // Punctuators with 2 characters.
+    if (ch2 === '==' || ch2 === '!=' || ch2 === '++' || ch2 === '--' || ch2 === '&&' || ch2 === '||') {
+      this._index += 2;
+      return {
+        type: 'punctuator',
+        value: ch2,
+        start: start,
+        end: this._index
+      };
+    }
+
+    // Punctuators with 1 character.
     if ('.();,{}[]:?~+-/<>^|%&*!='.indexOf(ch) >= 0) {
       ++this._index;
       return {
-        type: 'puncuator',
+        type: 'punctuator',
         value: ch,
         start: start,
         end: this._index
-      }
+      };
     }
 
+    // TODO: move this into token()
     ++this._index;
     return {
       type: 'unknown',
       value: ch,
       start: start,
       end: this._index
-    }
+    };
   },
 
   skipInvisible: function () {
