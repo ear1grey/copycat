@@ -20,6 +20,14 @@ JavaScriptParser.prototype = {
     return regex.test(ch);
   },
 
+  isPunctuation: function (ch) {
+    var punctuation = ['.', '(', ')', ';', ',', '{', '}', '[', ']', ':', '?', '~', '+', '-', '/', '<', '>', '^', '|', '%', '&', '*', '!', '='];
+    if (punctuation.indexOf(ch) >= 0) {
+      return true;
+    }
+    return false;
+  },
+
   isIdentifierStartChar: function (ch) {
     return (ch >= 0x41 && ch <= 0x5A) || // A-Z
            (ch >= 0x61 && ch <= 0x7A) || // a-z
@@ -59,22 +67,36 @@ JavaScriptParser.prototype = {
 
   token: function () {
     // Remove spaces, line breaks, tabs etc. Do this BEFORE collecting the
-    // current character (ch) below. This is because skipInvisible() will
-    // increment the _index value if whitespace is found.
+    // current character (ch and chCode) below. This is because skipInvisible()
+    // will increment the _index value if whitespace is found.
     this.skipInvisible();
 
-    var ch = this._source.charCodeAt(this._index);
+    var ch = this._source[this._index],
+        chCode = this._source.charCodeAt(this._index);
 
-    if (this.isIdentifierStartChar(ch)) {
+    if (this.isIdentifierStartChar(chCode)) {
       return this.identifier();
     }
 
     // Is the current character a ' or " (beginning of a string)?
-    if (ch === 0x27 || ch === 0x22) {
+    if (chCode === 0x27 || chCode === 0x22) {
       return this.string();
     }
 
-    return this.punctuation();
+    // If the current character is valid punctuation, it's punctuation.
+    if (this.isPunctuation(ch)) {
+      return this.punctuation();
+    }
+
+    // If all else fails, we have no idea what it is.
+    var start = this._index;
+    ++this._index;
+    return {
+      type: 'unknown',
+      value: ch,
+      start: start,
+      end: this._index
+    };
   },
 
   identifier: function () {
@@ -174,21 +196,12 @@ JavaScriptParser.prototype = {
       };
     }
 
-    // Punctuators with 1 character.
-    if ('.();,{}[]:?~+-/<>^|%&*!='.indexOf(ch) >= 0) {
-      ++this._index;
-      return {
-        type: 'punctuator',
-        value: ch,
-        start: start,
-        end: this._index
-      };
-    }
-
-    // TODO: move this into token()
+    // Because we've already checked that the current character is valid
+    // punctuation before calling this function, we can just return a
+    // punctuator object after doing 2 and 3 character checks.
     ++this._index;
     return {
-      type: 'unknown',
+      type: 'punctuator',
       value: ch,
       start: start,
       end: this._index
