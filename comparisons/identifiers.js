@@ -40,7 +40,7 @@ module.exports = function (schema1, schema2) {
   console.log('Found ' + similarities + ' identifier similarities.');
   console.log('Length of schema1: ' + schema1.length);
   
-  return (similarities / schema1.length) * 100;
+  return ((similarities / schema1.length) * 100).toFixed(2);
 };
 
 function ngram(array, n) {
