@@ -1,5 +1,6 @@
 var JavaScriptParser = require('./parsers/JavaScriptParser'),
     variables = require('./comparisons/identifiers'),
+    strings = require('./comparisons/strings'),
     fs = require('fs');
 
 // Load in test code and tokenize the JavaScript code.
@@ -13,6 +14,10 @@ console.log(schema2);
 
 // Compare the two schemas by their identifiers.
 var comparison = variables(schema1, schema2);
+var comparison2 = strings(schema1, schema2);
 
 console.log('Variable comparison results:');
 console.log('schema1 is ' + comparison + '% similar to schema2');
+
+console.log('String comparison results:');
+console.log('schema1 is ' + comparison2 + '% similar to schema2');
