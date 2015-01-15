@@ -24,6 +24,8 @@ module.exports = function (schema1, schema2) {
   schema2 = _.flatten(array2);
 
   function count_similarities(a, b) {
+    a = _.clone(a);
+    b = _.clone(b);
     return a.filter(function(el) {
       var index = b.indexOf(el);
       if (index >= 0) {
@@ -36,11 +38,14 @@ module.exports = function (schema1, schema2) {
   }
 
   var similarities = count_similarities(schema1, schema2);
-
-  console.log('Found ' + similarities + ' identifier similarities.');
-  console.log('Length of schema1: ' + schema1.length);
+  var similarities2 = count_similarities(schema2, schema1);
   
-  return ((similarities / schema1.length) * 100).toFixed(2);
+  var percSimilarity = parseFloat((similarities / schema1.length) * 100);
+  var percSimilarity2 = parseFloat((similarities2 / schema2.length) * 100);
+
+  var result = percSimilarity + percSimilarity2;
+
+  return ((percSimilarity + percSimilarity2) / 2).toFixed(2);
 };
 
 function ngram(array, n) {
