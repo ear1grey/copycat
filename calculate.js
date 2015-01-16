@@ -13,20 +13,21 @@ module.exports = function (comparisons, files) {
 
   for (var i = 0, len = combinations.length; i < len; i++) {
     for (var j = 0, len = comparisons.length; j < len; j++) {
-      var comparison = require('./comparisons/' + comparisons[j]);
+      var comparison = require('./comparisons/' + comparisons[j].name);
       var result = comparison(combinations[i][0], combinations[i][1]);
-
-      results.push(result);
+      results.push({
+        name: comparisons[j].name,
+        weight: comparisons[j].weight,
+        result: result
+      });
     }
   }
 
-  // SORT OUT WEIGHTING OF RESULTS HERE
-
   for (var i = 0, len = results.length; i < len; i++) {
-    console.log(results[i]);
-    resultTotal += results[i];
+    var result = (results[i].result / 100) * (results[i].weight / 100);
+    resultTotal += result;
   }
 
-  return resultTotal / results.length;
+  return (resultTotal * 100) / 2;
 
 };
