@@ -38,14 +38,8 @@ module.exports = function (schema1, schema2) {
   }
 
   var similarities = count_similarities(schema1, schema2);
-  var similarities2 = count_similarities(schema2, schema1);
   
-  var percSimilarity = parseFloat((similarities / schema1.length) * 100);
-  var percSimilarity2 = parseFloat((similarities2 / schema2.length) * 100);
-
-  var result = percSimilarity + percSimilarity2;
-
-  return ((percSimilarity + percSimilarity2) / 2).toFixed(2);
+  return parseFloat((similarities / schema1.length) * 100);
 };
 
 function ngram(array, n) {
