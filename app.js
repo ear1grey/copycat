@@ -1,8 +1,7 @@
 var compare = require('./compare');
 
-compare({
+compare.files('test/1.js', 'test/2.js', {
   assessmentId: 1,
-  files: ['test/1.js', 'test/2.js'],
   comparisons: [{
     name: 'variable',
     weight: 70

@@ -1,19 +1,14 @@
-module.exports = function (comparisons, files) {
-
-  // HACK
-  var file1 = files[0].schema;
-  var file2 = files[1].schema;
-
+module.exports = function (file1, file2, comparisons) {
   var combinations = [];
   var results = [];
   var resultTotal = null;
 
-  combinations.push([file1, file2]);
-  combinations.push([file2, file1]);
+  combinations.push([file1.schema, file2.schema]);
+  combinations.push([file2.schema, file1.schema]);
 
   for (var i = 0, len = combinations.length; i < len; i++) {
     for (var j = 0, len = comparisons.length; j < len; j++) {
-      var comparison = require('./comparisons/' + comparisons[j].name);
+      var comparison = require('../comparisons/' + comparisons[j].name);
       var result = comparison(combinations[i][0], combinations[i][1]);
       results.push({
         name: comparisons[j].name,
@@ -29,5 +24,4 @@ module.exports = function (comparisons, files) {
   }
 
   return (resultTotal * 100) / 2;
-
 };
