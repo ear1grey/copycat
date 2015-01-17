@@ -1,3 +1,5 @@
+'use strict';
+
 var _ = require('underscore');
 
 module.exports = function (schema1, schema2) {
@@ -38,7 +40,7 @@ module.exports = function (schema1, schema2) {
   }
 
   var similarities = count_similarities(schema1, schema2);
-  
+
   return parseFloat((similarities / schema1.length) * 100);
 };
 

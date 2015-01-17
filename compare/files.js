@@ -1,6 +1,8 @@
-var fs = require('fs'),
-    JavaScriptParser = require('../parsers/JavaScriptParser'),
-    calculate = require('./calculate');
+'use strict';
+
+var fs = require('fs');
+var JavaScriptParser = require('../parsers/JavaScriptParser');
+var calculate = require('./calculate');
 
 module.exports = function (file1, file2, config, callback) {
   var parser = null;

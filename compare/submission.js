@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (config, callback) {
   // config.files could now be either a path or a singular file
 

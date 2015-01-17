@@ -1,3 +1,5 @@
+'use strict';
+
 var JavaScriptParser = function (source) {
   this._source = source;
   this._length = this._source.length;

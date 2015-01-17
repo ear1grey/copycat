@@ -1,6 +1,6 @@
 var start = this._index;
 var id = this._getIdentifier();
-var type = 'unknown';
+var type = "unknown";
 
 if (id.length === 1) {
   type = 'identifier';

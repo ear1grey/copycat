@@ -1,7 +1,6 @@
-var files = require('./files'),
-    database = require('./database');
+'use strict';
 
 module.exports = {
-  files: files,
-  database: database
+  files: require('./files'),
+  submission: require('./submission')
 };

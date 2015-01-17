@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function (file1, file2, comparisons) {
   var combinations = [];
   var results = [];
