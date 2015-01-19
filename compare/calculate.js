@@ -1,14 +1,14 @@
 'use strict';
 
-var copycat = require('../copycat');
+var copycat = require('../lib/copycat');
 
 module.exports = function (file1, file2, comparisons) {
   var combinations = [];
   var results = [];
   var resultTotal = null;
 
-  combinations.push([file1.schema, file2.schema]);
-  combinations.push([file2.schema, file1.schema]);
+  combinations.push([file1, file2]);
+  combinations.push([file2, file1]);
 
   for (var i = 0, len = combinations.length; i < len; i++) {
     for (var j = 0, len = comparisons.length; j < len; j++) {
