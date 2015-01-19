@@ -1,5 +1,7 @@
 'use strict';
 
+var copycat = require('../copycat');
+
 module.exports = function (file1, file2, comparisons) {
   var combinations = [];
   var results = [];
@@ -10,8 +12,10 @@ module.exports = function (file1, file2, comparisons) {
 
   for (var i = 0, len = combinations.length; i < len; i++) {
     for (var j = 0, len = comparisons.length; j < len; j++) {
+      copycat.addFile(combinations[i][0]);
+      copycat.addFile(combinations[i][1]);
       var comparison = require('../comparisons/' + comparisons[j].name);
-      var result = comparison(combinations[i][0], combinations[i][1]);
+      var result = comparison.call(copycat, copycat);
       results.push({
         name: comparisons[j].name,
         weight: comparisons[j].weight,
