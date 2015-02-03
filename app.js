@@ -3,6 +3,7 @@
 var fs = require('fs');
 var db = require('./database');
 var compare = require('./compare');
+var copycat = require('./lib/copycat');
 
 // Compare two files and return a similarity percentage after specified
 // comparisons are carried out.
