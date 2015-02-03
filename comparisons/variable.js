@@ -36,6 +36,6 @@ module.exports = function (copycat) {
     }).length;
   }
 
-  return parseFloat((countSimilarities(variables1, variables2) / variables1.length) * 100);
+  return parseFloat(countSimilarities(variables1, variables2) / ((variables1.length + variables2.length) / 2) * 100);
   
 };
