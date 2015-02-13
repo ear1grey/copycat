@@ -1,15 +1,21 @@
 {
   "name": "copycat",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "author": "David Gauld <dcgauld@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dcgauld/copycat.git"
   },
-  "author": "David Gauld",
+  "bugs": {
+    "url": "https://github.com/dcgauld/copycat/issues"
+  },
   "dependencies": {
-    "underscore": "~1.7.0",
-    "mongoose": "~3.8.21",
-    "promise": "~6.1.0"
+    "chalk": "^0.5.1",
+    "commander": "^2.6.0",
+    "underscore": "^1.7.0"
+  },
+  "bin": {
+    "copycat": "bin/copycat.js"
   }
 }

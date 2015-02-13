@@ -1,20 +1,15 @@
-var start = this._index;
-var id = this._getIdentifier();
-var type = "unknown";
-
-if (id.length === 1) {
-  type = 'identifier';
-} else if (this._isKeyword(id)) {
-  type = 'keyword';
-} else {
-  type = 'unknown';
+function hellotwo() {
+  function goodbye() {
+    function yo() {
+      function hello () {
+        var elements = [];
+        for (var i = 0; i < 5; i++) {
+          if (i > 3) {
+            i = i * 2;
+          }
+          elements.push('Number ' + i);
+        }
+      }
+    }
+  }
 }
-
-return {
-  type: type,
-  value: id,
-  lineNumber: lineNumber,
-  lineStart: lineStart,
-  start: start,
-  end: this._index
-};

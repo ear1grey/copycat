@@ -1,24 +1,26 @@
 'use strict';
 
 var _ = require('underscore');
+var file = require('../../lib/file');
+var utils = require('../../lib/utils');
 
-module.exports = function (copycat) {
+module.exports = function (files) {
 
-  var schema1 = copycat.getFile(0).tokenize();
-  var schema2 = copycat.getFile(1).tokenize();
+  var schema1 = file.tokenize(files[0].source);
+  var schema2 = file.tokenize(files[1].source);
 
-  var variables1 = copycat.utils.filter(schema1, 'identifier');
-  var variables2 = copycat.utils.filter(schema2, 'identifier');
+  var variables1 = utils.filter(schema1, 'identifier');
+  var variables2 = utils.filter(schema2, 'identifier');
 
   var variablesArray1 = [];
   var variablesArray2 = [];
 
   for (var i = 0; i < variables1.length; i++) {
-    variablesArray1.push(copycat.utils.ngram(variables1[i].value, 2));
+    variablesArray1.push(utils.ngram(variables1[i].value, 4));
   }
 
   for (var i = 0; i < variables2.length; i++) {
-    variablesArray2.push(copycat.utils.ngram(variables2[i].value, 2));
+    variablesArray2.push(utils.ngram(variables2[i].value, 4));
   }
 
   variables1 = _.flatten(variablesArray1);
@@ -36,6 +38,6 @@ module.exports = function (copycat) {
     }).length;
   }
 
-  return parseFloat(countSimilarities(variables1, variables2) / ((variables1.length + variables2.length) / 2) * 100);
+  return parseFloat(countSimilarities(variables1, variables2) / ((variables1.length + variables2.length) / 2) * 100) / 2;
   
 };

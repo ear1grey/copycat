@@ -1,0 +1,16 @@
+{
+  "files": ["test/3.js", "test/4.js"],
+  "comparisons": [{
+    "name": "variable",
+    "weight": 37
+  }, {
+    "name": "string",
+    "weight": 20
+  }, {
+    "name": "schema",
+    "weight": 40
+  }, {
+    "name": "length",
+    "weight": 3
+  }]
+}
