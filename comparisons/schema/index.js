@@ -2,10 +2,10 @@
 
 var file = require('../../lib/file');
 
-module.exports = function (files) {
+module.exports = function (file1, file2) {
 
-  var array1 = file.prune(files[0].source);
-  var array2 = file.prune(files[1].source);
+  var array1 = file.prune(file1.source);
+  var array2 = file.prune(file2.source);
 
   function countSimilarities(a, b) {
     return a.filter(function(el) {

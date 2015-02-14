@@ -1,5 +1,6 @@
 {
-  "files": ["test/3.js", "test/4.js"],
+  "file1": "test/3.js",
+  "file2": "test/4.js",
   "comparisons": [{
     "name": "variable",
     "weight": 37

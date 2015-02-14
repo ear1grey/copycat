@@ -4,10 +4,10 @@ var _ = require('underscore');
 var file = require('../../lib/file');
 var utils = require('../../lib/utils');
 
-module.exports = function (files) {
+module.exports = function (file1, file2) {
 
-  var schema1 = file.tokenize(files[0].source);
-  var schema2 = file.tokenize(files[1].source);
+  var schema1 = file.tokenize(file1.source);
+  var schema2 = file.tokenize(file2.source);
 
   var variables1 = utils.filter(schema1, 'identifier');
   var variables2 = utils.filter(schema2, 'identifier');
