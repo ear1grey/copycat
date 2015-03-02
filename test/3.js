@@ -1,16 +1,24 @@
-var start = this._index;
-
-if (hello === true) {
-  var hello = false;
-  var start = 'hello';
-  if (right === left) {
-    var halt = lol;
-  }
-  if (left !== right && you !== me) {
-    var you = me;
+var hello;
+if (hello === 'true') {
+  for (i === 'hello') {
+    var hello;
   }
 }
-
-if (true === false) {
-  var thisIs = 'fucked up';
-}
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
+var you;
