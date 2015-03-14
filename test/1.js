@@ -1,4 +1,4 @@
-function hellotwo() {
+function hellocase() {
   function goodbye() {
     function yo() {
       function hello () {
