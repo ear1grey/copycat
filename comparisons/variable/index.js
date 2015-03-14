@@ -9,18 +9,18 @@ module.exports = function (file1, file2) {
   var schema1 = file.tokenize(file1.source);
   var schema2 = file.tokenize(file2.source);
 
-  var variables1 = utils.filter(schema1, 'identifier');
-  var variables2 = utils.filter(schema2, 'identifier');
+  var variables1 = utils.filter(schema1, 'Identifier');
+  var variables2 = utils.filter(schema2, 'Identifier');
 
   var variablesArray1 = [];
   var variablesArray2 = [];
 
   for (var i = 0; i < variables1.length; i++) {
-    variablesArray1.push(utils.ngram(variables1[i].value, 4));
+    variablesArray1.push(utils.ngram(variables1[i].text, 4));
   }
 
   for (var i = 0; i < variables2.length; i++) {
-    variablesArray2.push(utils.ngram(variables2[i].value, 4));
+    variablesArray2.push(utils.ngram(variables2[i].text, 4));
   }
 
   variables1 = _.flatten(variablesArray1);
