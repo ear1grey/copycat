@@ -1,17 +1,13 @@
 {
   "file1": "test/3.js",
   "file2": "test/4.js",
+  "file3": "test/5.js",
   "comparisons": [{
     "name": "variable",
-    "weight": 37
-  }, {
-    "name": "string",
-    "weight": 20
-  }, {
-    "name": "schema",
     "weight": 40
   }, {
-    "name": "length",
-    "weight": 3
-  }]
+    "name": "string",
+    "weight": 60
+  }],
+  "database": "mongodb://localhost:27017/copycat"
 }
