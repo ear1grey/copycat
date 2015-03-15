@@ -1,0 +1,25 @@
+{
+  "name": "PHP",
+  "version": "0.0.1",
+  "extensions": [".php"],
+  "definitions": {
+    "tokens": [
+      {
+        "name": "String",
+        "match": "/[\\'\"]([^\"\\']+)[\\'\"]/g"
+      }
+    ],
+    "rules": [
+      {
+        "name": "Block",
+        "type": "Container",
+        "match": "{ Statement }"
+      },
+      {
+        "name": "IfStatement",
+        "type": "Conditional",
+        "match": "if ( ... ) Statement"
+      }
+    ]
+  }
+}
