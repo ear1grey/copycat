@@ -6,8 +6,8 @@ var utils = require('../../lib/utils');
 
 module.exports = function (file1, file2) {
 
-  var schema1 = file.tokenize(file1.source);
-  var schema2 = file.tokenize(file2.source);
+  var schema1 = file.tokenise(file1.name, file1.source);
+  var schema2 = file.tokenise(file2.name, file2.source);
 
   var strings1 = utils.filter(schema1, 'String');
   var strings2 = utils.filter(schema2, 'String');
