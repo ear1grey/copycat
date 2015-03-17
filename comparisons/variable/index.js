@@ -38,6 +38,12 @@ module.exports = function (file1, file2) {
     }).length;
   }
 
-  return parseFloat(countSimilarities(variables1, variables2) / ((variables1.length + variables2.length) / 2) * 100) / 2;
+  return {
+    version: '0.0.1',
+    result: parseFloat(countSimilarities(variables1, variables2) / ((variables1.length + variables2.length) / 2) * 100) / 2,
+    meta: {
+      hello: 'goodbye'
+    }
+  };
   
 };
