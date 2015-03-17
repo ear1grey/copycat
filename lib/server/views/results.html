@@ -1,0 +1,16 @@
+{{#each results}}
+<div class="result">
+  <h1>{{_files.0.name}} -> {{_files.1.name}} : <span style="color: red">{{toFixed result 2}}% similarity</span></h1>
+  <div><strong>Author 1:</strong> {{_files.0._author.name}}</div>
+  <div><strong>Author 2:</strong> {{_files.1._author.name}}</div>
+  <h2>Comparisons</h2>
+  {{#each results}}
+  <div style="border: 1px solid #ccc; padding: 1rem;">
+    <h3>{{name}} v{{version}}</h3>
+    <div><strong>Result: </strong> {{toFixed result 2}}% similarity</div>
+    <div><strong>Weight: </strong> {{weight}}%</div>
+    <div><strong>Meta: </strong> {{meta}}</div>
+  </div>
+  {{/each}}
+</div>
+{{/each}}
