@@ -3,8 +3,8 @@
   <h1>{{_files.0.name}} -> {{_files.1.name}} : <span style="color: red">{{toFixed result 2}}% similarity</span></h1>
   <div><em>{{_files.0.path}} -> {{_files.1.path}}</em></div>
   <div><em><a href="/api/file/compare/{{_files.0._id}}/{{_files.1._id}}">View these files side-by-side</a></em></div>
-  <div><strong>Author 1:</strong> {{_files.0._author.name}}</div>
-  <div><strong>Author 2:</strong> {{_files.1._author.name}}</div>
+  <div><strong>Author 1:</strong> {{_files.0._author._id}}</div>
+  <div><strong>Author 2:</strong> {{_files.1._author._id}}</div>
   <h2>Comparisons</h2>
   {{#each results}}
   <div style="border: 1px solid #ccc; padding: 1rem;">
