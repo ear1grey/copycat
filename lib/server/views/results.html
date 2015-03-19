@@ -1,6 +1,6 @@
 {{#each results}}
 <section class="result">
-  <h1 class="important">{{toFixed result 2}}%</h1>
+  <h1>{{{percentage result}}}</h1>
   <div class="file">
     <div class="file-name">{{_files.0.name}}</div>
     <div class="file-path">{{_files.0.path}}</div>
@@ -19,7 +19,7 @@
   {{#each results}}
   <div class="comparison">
     <h3>{{name}} v{{version}}</h3>
-    <div><strong>Result: </strong> {{toFixed result 2}}% similarity</div>
+    <div><strong>Result: </strong> <strong>{{{percentage result}}}</strong> similarity</div>
     <div><strong>Weight: </strong> {{weight}}%</div>
     <div><strong>Meta: </strong> {{stringify meta}}</div>
   </div>
