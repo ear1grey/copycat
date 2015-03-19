@@ -44,5 +44,6 @@ module.exports = function (file1, file2) {
     meta: {
       hello: 'hello'
     }
-  }
+  };
+  
 };
