@@ -1,6 +1,6 @@
 {{#each results}}
 <section class="result">
-  <h1 class="important">{{toFixed result 2}}% similarity</h1>
+  <h1 class="important">{{toFixed result 2}}%</h1>
   <div class="file">
     <div class="file-name">{{_files.0.name}}</div>
     <div class="file-path">{{_files.0.path}}</div>
@@ -14,7 +14,7 @@
     <div class="file-author">- {{_files.1._author._id}}</div>
     <a href="#">View file &rarr;</a>
   </div>
-  <p><em><a href="/api/file/compare/{{_files.0._id}}/{{_files.1._id}}">View these files side-by-side</a></em></p>
+  <p><a href="/api/file/compare/{{_files.0._id}}/{{_files.1._id}}">View files side-by-side &rarr;</a></p>
   <h2>Comparisons</h2>
   {{#each results}}
   <div class="comparison">
