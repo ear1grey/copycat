@@ -1,18 +1,28 @@
 {{#each results}}
-<div class="result">
-  <h1>{{_files.0.name}} -> {{_files.1.name}} : <span style="color: red">{{toFixed result 2}}% similarity</span></h1>
-  <div><em>{{_files.0.path}} -> {{_files.1.path}}</em></div>
-  <div><em><a href="/api/file/compare/{{_files.0._id}}/{{_files.1._id}}">View these files side-by-side</a></em></div>
-  <div><strong>Author 1:</strong> {{_files.0._author._id}}</div>
-  <div><strong>Author 2:</strong> {{_files.1._author._id}}</div>
+<section class="result">
+  <h1 class="important">{{toFixed result 2}}% similarity</h1>
+  <div class="file">
+    <div class="file-name">{{_files.0.name}}</div>
+    <div class="file-path">{{_files.0.path}}</div>
+    <div class="file-author">- {{_files.0._author._id}}</div>
+    <a href="#">View file &rarr;</a>
+  </div>
+  <div class="arrow">&rarr;</div>
+  <div class="file">
+    <div class="file-name">{{_files.1.name}}</div>
+    <div class="file-path">{{_files.1.path}}</div>
+    <div class="file-author">- {{_files.1._author._id}}</div>
+    <a href="#">View file &rarr;</a>
+  </div>
+  <p><em><a href="/api/file/compare/{{_files.0._id}}/{{_files.1._id}}">View these files side-by-side</a></em></p>
   <h2>Comparisons</h2>
   {{#each results}}
-  <div style="border: 1px solid #ccc; padding: 1rem;">
+  <div class="comparison">
     <h3>{{name}} v{{version}}</h3>
     <div><strong>Result: </strong> {{toFixed result 2}}% similarity</div>
     <div><strong>Weight: </strong> {{weight}}%</div>
     <div><strong>Meta: </strong> {{stringify meta}}</div>
   </div>
   {{/each}}
-</div>
+</section>
 {{/each}}
