@@ -40,10 +40,10 @@ module.exports = function (file1, file2) {
 
   return {
     version: '0.0.1',
-    result: parseFloat(countSimilarities(strings1, strings2) / ((strings1.length + strings2.length) / 2) * 100) / 2,
+    result: (parseFloat(countSimilarities(strings1, strings2) / ((strings1.length + strings2.length) / 2) * 100) / 2) || 0,
     meta: {
       hello: 'hello'
     }
   };
-  
+
 };
