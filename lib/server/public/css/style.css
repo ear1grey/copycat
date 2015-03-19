@@ -78,7 +78,7 @@ a:hover {
 
 .file .file-path {
   color: #888;
-  font-size: 0.75rem;
+  font-size: 0.8rem;
   display: inline-block;
   margin-bottom: 0.5rem;
   margin-top: 0;
@@ -94,4 +94,10 @@ a:hover {
   margin: 0 0.5rem;
   font-size: 1.6rem;
   color: #888;
+}
+
+pre {
+  font-family: monospace;
+  font-size: 0.8rem;
+  margin: 1rem;
 }
