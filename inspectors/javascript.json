@@ -5,6 +5,10 @@
   "definitions": {
     "tokens": [
       {
+        "name": "Escape",
+        "match": "/\\n/g"
+      },
+      {
         "name": "String",
         "match": "/[\\'\"]([^\"\\']+)[\\'\"]/g"
       },
