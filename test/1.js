@@ -1,6 +1,7 @@
 function hellocase() {
   function goodbye() {
     function yo() {
+      // This makes it work
       function hello () {
         var elements = [];
         for (var i = 0; i < 5; i++) {
