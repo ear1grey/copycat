@@ -1,5 +1,13 @@
 @import 'normalize.css';
 
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box
+}
+
 body {
   font: 16px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -72,7 +80,7 @@ a:hover {
   z-index: -1;
 }
 
-.file .file-name {
+.file-name {
   font-size: 1.6rem;
 }
 
@@ -99,5 +107,29 @@ a:hover {
 pre {
   font-family: monospace;
   font-size: 0.8rem;
-  margin: 1rem;
+  margin: 0;
+}
+
+.code {
+  display: block;
+  width: 50%;
+  position: absolute;
+  top: 0;
+  overflow: scroll;
+  height: 100%;
+  padding: 1rem;
+}
+
+.code-left {
+  left: 0;
+  border-right: 1px solid #ccc;
+}
+
+.code-right {
+  right: 0;
+}
+
+.code .file-name {
+  margin-bottom: 1rem;
+  display: inline-block;
 }
