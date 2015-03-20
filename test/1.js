@@ -1,4 +1,5 @@
 function hellocase() {
+  console.log('hello');
   function goodbye() {
     function yo() {
       // This makes it work
@@ -14,3 +15,4 @@ function hellocase() {
     }
   }
 }
+console.log('hello');

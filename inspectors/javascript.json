@@ -67,29 +67,29 @@
     ],
     "rules": [
       {
-        "name": "Block",
-        "type": "Container",
-        "match": "{ Statement }"
-      },
-      {
         "name": "VariableStatement",
         "type": "Assignment",
-        "match": "var ... ;"
+        "match": ["var", "...", ";"]
       },
       {
         "name": "IfStatement",
         "type": "Conditional",
-        "match": "if ( ... ) Statement"
+        "match": ["if", "(", "...", ")", "{", "Statement", "}"]
       },
       {
         "name": "ForStatement",
         "type": "Iteration",
-        "match": "for ( ... )"
+        "match": ["for", "(", "...", ")", "{", "Statement", "}"]
+      },
+      {
+        "name": "FunctionStatement",
+        "type": "Container",
+        "match": ["function", "...", "(", "...", ")", "{", "Statement", "}"]
       },
       {
         "name": "ConsoleLogStatement",
         "type": "Output",
-        "match": "console . log ( ... ) ;"
+        "match": ["console", ".", "log", "(", "...", ")", ";"]
       }
     ]
   }
