@@ -133,3 +133,8 @@ pre {
   margin-bottom: 1rem;
   display: inline-block;
 }
+
+.comparisons {
+  display: none;
+  margin-top: 1rem;
+}
