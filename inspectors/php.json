@@ -5,20 +5,96 @@
   "definitions": {
     "tokens": [
       {
+        "name": "Comment",
+        "match": "(\\/\\*)[^]+(\\*\\/)",
+        "flag": "g"
+      },
+      {
+        "name": "Comment",
+        "match": "(\\/\\/).+",
+        "flag": "g"
+      },
+      {
         "name": "String",
-        "match": "/[\\'\"]([^\"\\']+)[\\'\"]/g"
+        "match": "[\\'\"]([^\"\\']+)[\\'\"]",
+        "flag": "g"
+      },
+      {
+        "name": "Keyword",
+        "match": "\\b(__halt_compiler|abstract|and|array|as|break|callable|case|catch|class|clone|const|continue|declare|default|die|do|echo|else|elseif|empty|enddeclare|endfor|endforeach|endif|endswitch|endwhile|eval|exit|extends|final|for|foreach|function|global|goto|if|implements|include|include_once|instanceof|insteadof|interface|isset|list|namespace|new|or|print|private|protected|public|require|require_once|return|static|switch|throw|trait|try|unset|use|var|while|xor)\\b",
+        "flag": "g"
+      },
+      {
+        "name": "Identifier",
+        "match": "[A-Za-z_][A-Za-z0-9_]*",
+        "flag": "g"
+      },
+      {
+        "name": "Number",
+        "match": "(\\d+\\.\\d+)",
+        "flag": "g"
+      },
+      {
+        "name": "Number",
+        "match": "(\\.\\d+)",
+        "flag": "g"
+      },
+      {
+        "name": "Number",
+        "match": "(\\d+)",
+        "flag": "g"
+      },
+      {
+        "name": "Punctuation",
+        "match": "/(\\=\\=\\=|\\!\\=\\=)",
+        "flag": "g"
+      },
+      {
+        "name": "Punctuation",
+        "match": "(\\=\\=|\\!\\=|\\+\\+|\\-\\-|\\&\\&|\\|\\|)",
+        "flag": "g"
+      },
+      {
+        "name": "Punctuation",
+        "match": "[\\.\\,\\=\\!\\+\\-\\&\\|\\(\\)\\{\\}\\;\\:\\[\\]\\\"\\']",
+        "flag": "g"
+      },
+      {
+        "name": "Escape",
+        "match": "\\n",
+        "flag": "g"
       }
     ],
     "rules": [
       {
-        "name": "Block",
-        "type": "Container",
-        "match": "{ Statement }"
+        "name": "VariableStatement",
+        "type": "Assignment",
+        "match": ["$", "...", ";"]
       },
       {
         "name": "IfStatement",
         "type": "Conditional",
-        "match": "if ( ... ) Statement"
+        "match": ["if", "(", "...", ")", "{", "Statement", "}"]
+      },
+      {
+        "name": "ForStatement",
+        "type": "Iteration",
+        "match": ["for", "(", "...", ")", "{", "Statement", "}"]
+      },
+      {
+        "name": "SwitchStatement",
+        "type": "Conditional",
+        "match": ["switch", "(", "...", ")", "{", "Statement", "}"]
+      },
+      {
+        "name": "FunctionStatement",
+        "type": "Container",
+        "match": ["function", "...", "(", "...", ")", "{", "Statement", "}"]
+      },
+      {
+        "name": "EchoStatement",
+        "type": "Output",
+        "match": ["echo", "...", ";"]
       }
     ]
   }
