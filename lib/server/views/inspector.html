@@ -57,8 +57,7 @@ d3.json("/api/file/550c6c07e957f515e92fad40", function(json) {
   }
 
   // Initialize the display to show a few nodes.
-  root.children.forEach(toggleAll);
-  toggle(root.children[1]);
+  //root.children.forEach(toggleAll);
 
   update(root);
 });
@@ -90,7 +89,7 @@ function update(source) {
       .attr("x", function(d) { return d.children || d._children ? -10 : 10; })
       .attr("dy", ".35em")
       .attr("text-anchor", function(d) { return d.children || d._children ? "end" : "start"; })
-      .text(function(d) { return d.name; })
+      .text(function(d) { return d.type; })
       .style("fill-opacity", 1e-6);
 
   // Transition nodes to their new position.
