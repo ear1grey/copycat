@@ -15,13 +15,13 @@ module.exports = function (file1, file2) {
   var counter2 = 0;
 
   escapes1.forEach(function (escape) {
-    if (escape.value === '\n') {
+    if (escape.text === '\n') {
       counter1++;
     }
   });
 
   escapes2.forEach(function (escape) {
-    if (escape.value === '\n') {
+    if (escape.text === '\n') {
       counter2++;
     }
   });
@@ -29,10 +29,14 @@ module.exports = function (file1, file2) {
   counter1++; // Account for first line.
   counter2++;
 
+  var result = 100 - ((Math.abs(counter1 - counter2) / ((counter1 + counter2) / 2)) * 100);
+
   return {
     version: '0.0.1',
-    result: (counter1 / counter2) * 100,
-    meta: {}
+    result: result,
+    meta: {
+
+    }
   };
   
 };
