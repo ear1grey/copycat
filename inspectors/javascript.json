@@ -82,6 +82,11 @@
         "match": ["for", "(", "...", ")", "{", "Statement", "}"]
       },
       {
+        "name": "SwitchStatement",
+        "type": "Conditional",
+        "match": ["switch", "(", "...", ")", "{", "Statement", "}"]
+      },
+      {
         "name": "FunctionStatement",
         "type": "Container",
         "match": ["function", "...", "(", "...", ")", "{", "Statement", "}"]
