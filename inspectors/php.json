@@ -82,6 +82,11 @@
         "match": ["for", "(", "...", ")", "{", "Statement", "}"]
       },
       {
+        "name": "ForEachStatement",
+        "type": "Iteration",
+        "match": ["foreach", "(", "...", ")", "{", "Statement", "}"]
+      },
+      {
         "name": "SwitchStatement",
         "type": "Conditional",
         "match": ["switch", "(", "...", ")", "{", "Statement", "}"]
