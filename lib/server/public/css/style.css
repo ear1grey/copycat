@@ -84,6 +84,11 @@ a:hover {
   font-size: 1.6rem;
 }
 
+.file .file-id {
+  color: #aaa;
+  font-size: 0.8rem;
+}
+
 .file .file-path {
   color: #888;
   font-size: 0.8rem;
