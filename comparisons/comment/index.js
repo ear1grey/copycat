@@ -38,12 +38,18 @@ module.exports = function (file1, file2) {
     }).length;
   }
 
+  var result = (parseFloat(countSimilarities(comments1, comments2) / ((comments1.length + comments2.length) / 2) * 100) / 2) || 0;
+
+  if (comments1.length === 0 && comments2.length === 0) {
+    result = 100;
+  }
+
   return {
     version: '0.0.1',
-    result: (parseFloat(countSimilarities(comments1, comments2) / ((comments1.length + comments2.length) / 2) * 100) / 2) || 0,
+    result: result,
     meta: {
       hello: 'hello'
     }
   };
-  
+
 };
