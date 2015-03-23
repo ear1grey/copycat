@@ -1,15 +1,18 @@
 {
   "comparisons": [{
     "name": "variable",
-    "weight": 53
+    "weight": 43
   }, {
     "name": "string",
-    "weight": 30
+    "weight": 25
   }, {
     "name": "length",
     "weight": 2
   }, {
     "name": "comment",
+    "weight": 15
+  }, {
+    "name": "schema",
     "weight": 15
   }],
   "database": "mongodb://localhost:27017/copycat"
