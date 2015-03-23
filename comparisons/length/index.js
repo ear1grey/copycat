@@ -29,7 +29,7 @@ module.exports = function (file1, file2) {
   counter1++; // Account for first line.
   counter2++;
 
-  var result = 100 - ((Math.abs(counter1 - counter2) / ((counter1 + counter2) / 2)) * 100);
+  var result = (100 - ((Math.abs(counter1 - counter2) / ((counter1 + counter2) / 2)) * 100)) || 0;
 
   return {
     version: '0.0.1',
@@ -38,5 +38,5 @@ module.exports = function (file1, file2) {
 
     }
   };
-  
+
 };
