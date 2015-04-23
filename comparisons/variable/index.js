@@ -23,27 +23,29 @@ module.exports = function (file1, file2) {
     variablesArray2.push(utils.ngram(variables2[i].text, 4));
   }
 
-  variables1 = _.flatten(variablesArray1);
-  variables2 = _.flatten(variablesArray2);
+  variables1 = _.uniq(_.flatten(variablesArray1));
+  variables2 = _.uniq(_.flatten(variablesArray2));
 
   function countSimilarities(a, b) {
     return a.filter(function(el) {
       var index = b.indexOf(el);
       if (index >= 0) {
-        // The element exists in the b array.
-        b.splice(index, 1);
         return true;
       }
       return false;
     }).length;
   }
 
+  //console.log(variables1, variables2);
+
+  var similarities = countSimilarities(variables1, variables2);
+
   return {
     version: '0.0.1',
-    result: (parseFloat(countSimilarities(variables1, variables2) / ((variables1.length + variables2.length) / 2) * 100) / 2) || 0,
+    result: parseFloat(similarities / ((variables1.length + variables2.length) / 2) * 100) || 0,
     meta: {
       hello: 'goodbye'
     }
   };
-  
+
 };

@@ -23,24 +23,24 @@ module.exports = function (file1, file2) {
     stringsArray2.push(utils.ngram(strings2[i].text, 4));
   }
 
-  strings1 = _.flatten(stringsArray1);
-  strings2 = _.flatten(stringsArray2);
+  strings1 = _.uniq(_.flatten(stringsArray1));
+  strings2 = _.uniq(_.flatten(stringsArray2));
 
   function countSimilarities(a, b) {
     return a.filter(function(el) {
       var index = b.indexOf(el);
       if (index >= 0) {
-        // The element exists in the b array.
-        b.splice(index, 1);
         return true;
       }
       return false;
     }).length;
   }
 
+  var similarities = countSimilarities(strings1, strings2);
+
   return {
     version: '0.0.1',
-    result: (parseFloat(countSimilarities(strings1, strings2) / ((strings1.length + strings2.length) / 2) * 100) / 2) || 0,
+    result: parseFloat(similarities / ((strings1.length + strings2.length) / 2) * 100) || 0,
     meta: {
       hello: 'hello'
     }

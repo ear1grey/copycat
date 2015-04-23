@@ -3,8 +3,12 @@
 var file = require('../../lib/file');
 var _ = require('underscore');
 var utils = require('../../lib/utils');
+var util = require('util');
 
 module.exports = function (file1, file2) {
+
+  //console.log(util.inspect(file.inspect(file1.name, file1.source).children, false, null));
+  //console.log(util.inspect(file.inspect(file2.name, file2.source).children, false, null));
 
   var array1 = prune(file1.name, file1.source);
   var array2 = prune(file2.name, file2.source);
@@ -34,7 +38,7 @@ module.exports = function (file1, file2) {
 function prune(name, source) {
   var tree = file.inspect(name, source).children;
   var element = null;
-  var minLevel = 3;
+  var minLevel = 1;
   var elements = [];
 
   var recurse = function (data, stack) {
